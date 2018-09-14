@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_video_chat_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".VideoChatViewActivity">
+
+    <FrameLayout
+        android:id="@+id/video_view_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="@color/black" />
+
+    <LinearLayout
+        android:id="@+id/tool_bar_parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/chat_parent"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/tool_bar"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="20">
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/info_button"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/button_background"
+                    android:onClick="onInfoButtonClicked"
+                    android:padding="12dp"
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@drawable/info" />
+            </FrameLayout>
+
+            <ImageView
+                android:id="@+id/mute_video_btn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="20"
+                android:onClick="onLocalVideoMuteClicked"
+                android:scaleType="centerInside"
+                android:src="@drawable/btn_voice" />
+
+            <ImageView
+                android:id="@+id/mute_audio_btn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="20"
+                android:onClick="onLocalAudioMuteClicked"
+                android:scaleType="centerInside"
+                android:src="@drawable/btn_mute" />
+
+            <ImageView
+                android:id="@+id/switch_camera_btn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="20"
+                android:onClick="onSwitchCameraClicked"
+                android:scaleType="centerInside"
+                android:src="@drawable/btn_switch_camera" />
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="20"
+                android:onClick="onEncCallClicked"
+                android:scaleType="centerInside"
+                android:src="@drawable/btn_end_call" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/chat_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/tool_bar_parent"
+        android:layout_margin="20dp"
+        app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+        app:reverseLayout="true" />
+
+    <LinearLayout
+        android:id="@+id/chat_parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="4dp"
+        android:layout_marginStart="4dp"
+        android:background="@drawable/circular_background"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/chat_et"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:hint="Your chat here.."
+            android:inputType="textShortMessage"
+            android:maxLines="2"
+            android:padding="8dp"
+            android:paddingEnd="8dp"
+            android:paddingStart="8dp"
+            android:textColor="@color/white" />
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/send_btn"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:onClick="onMessageSendClicked"
+            android:padding="4dp"
+            app:srcCompat="@drawable/ic_send" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/video_detail_parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp">
+
+        <TextView
+            android:id="@+id/video_detail_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#80000000"
+            android:padding="4dp"
+            android:textColor="#FFFFFF"
+            android:visibility="gone"
+            tools:text="Remote video Details"
+            tools:visibility="visible" />
+    </FrameLayout>
+
+</RelativeLayout>
